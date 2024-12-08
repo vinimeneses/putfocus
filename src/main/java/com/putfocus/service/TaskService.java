@@ -1,19 +1,18 @@
 package com.putfocus.service;
 
-import com.putfocus.entities.Task;
-
+import com.putfocus.dto.TaskDto;
 import java.util.List;
 
 public interface TaskService {
-    void createTask(Task task);
+    TaskDto createTask(TaskDto task);
 
-    void updateTask(Task task);
+    void updateTask(TaskDto task);
 
     void deleteTask(Long id);
 
-    List<Task> getAllTasks();
+    List<TaskDto> getAllTasks();
 
-    Task findTaskById(Long id);
+    TaskDto findTaskById(Long id);
 
-    void incrementSession(Long taskId);
+    TaskDto incrementSession(Long taskId);
 }
