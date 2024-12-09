@@ -1,6 +1,7 @@
 package com.putfocus.service.impl;
 
 import com.putfocus.dto.TaskDto;
+import com.putfocus.entities.Session;
 import com.putfocus.entities.Task;
 import com.putfocus.repository.TaskRepository;
 import com.putfocus.service.TaskService;
@@ -52,16 +53,11 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public TaskDto incrementSession(Long taskId) {
-        Task task = taskRepository.findById(taskId)
+    public TaskDto incrementSession(Long id, Session session) {
+        Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Task not found"));
-        // Increment the current session
-        task.setCurrentSession(task.getCurrentSession() + 1);
-
-        if(task.getCurrentSession() >= task.getSessionEstimate()) {
-            task.setCompleted(true);
-        }
-
+        task.getSessions().add(session);
+        session.setTask(task);
         Task updatedTask = taskRepository.save(task);
         return modelMapper.map(updatedTask, TaskDto.class);
     }

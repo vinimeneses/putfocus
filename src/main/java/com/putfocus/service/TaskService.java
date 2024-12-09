@@ -1,6 +1,8 @@
 package com.putfocus.service;
 
 import com.putfocus.dto.TaskDto;
+import com.putfocus.entities.Session;
+
 import java.util.List;
 
 public interface TaskService {
@@ -14,5 +16,5 @@ public interface TaskService {
 
     TaskDto findTaskById(Long id);
 
-    TaskDto incrementSession(Long taskId);
+    TaskDto incrementSession(Long id, Session session);
 }

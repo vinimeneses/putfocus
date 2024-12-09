@@ -1,7 +1,6 @@
 package com.putfocus.controller;
 
 import com.putfocus.dto.TaskDto;
-import com.putfocus.entities.Task;
 import com.putfocus.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
