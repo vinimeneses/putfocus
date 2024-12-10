@@ -17,8 +17,9 @@ public class Task {
     private String title;
     private String description;
     @Column(nullable = false)
-    private int startSessionDefault = 0;
+    private int currentSession = 0;
     private boolean completed;
+
     @OneToMany(mappedBy = "task", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Session> sessions;
 }

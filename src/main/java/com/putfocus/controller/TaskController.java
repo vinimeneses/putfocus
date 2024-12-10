@@ -1,6 +1,8 @@
 package com.putfocus.controller;
 
 import com.putfocus.dto.TaskDto;
+import com.putfocus.entities.Session;
+import com.putfocus.entities.Task;
 import com.putfocus.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -52,8 +54,7 @@ public class TaskController {
 
     @PostMapping("/{id}/increment")
     public ResponseEntity<TaskDto> incrementSession(@PathVariable Long id) {
-        TaskDto updatedTask = taskService.incrementSession(id); // Service handles everything
-        return ResponseEntity.ok(updatedTask);
+        return null;
     }
 
 }

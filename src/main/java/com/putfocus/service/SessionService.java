@@ -4,6 +4,6 @@ import com.putfocus.entities.Session;
 import com.putfocus.entities.Task;
 
 public interface SessionService {
-    void startSession(Long id, Session session);
+    void saveSession(Long id, Session session);
 
     }
