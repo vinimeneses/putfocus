@@ -4,31 +4,29 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 @Service
 public class TimerService {
 
     private LocalDateTime endTime = LocalDateTime.now().plusSeconds(10);
-
     private boolean timeUp = false;
 
     @Scheduled(fixedRate = 1000)
     public void countdown() {
+        if (timeUp) {
+
+            return;
+        }
+
         LocalDateTime now = LocalDateTime.now();
 
-        if (!now.isBefore(endTime) && !timeUp) {
+        if (!now.isBefore(endTime)) {
             timeUp = true;
             System.out.println("O tempo acabou!");
             return;
         }
 
         Duration remainingDuration = Duration.between(now, endTime);
-
-        if (remainingDuration.isNegative() || remainingDuration.isZero()) {
-            System.out.println("O tempo acabou!");
-            return;
-        }
 
         String formattedTime = formatTime(remainingDuration);
 
