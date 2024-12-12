@@ -15,6 +15,5 @@ public class TaskDto {
     private String description;
     private int sessionEstimate;
     private int currentSession = 0;
-    private boolean completed;
-
+    private boolean completed = false;
 }

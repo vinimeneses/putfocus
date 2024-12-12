@@ -1,3 +1,4 @@
+// Session.java
 package com.putfocus.entities;
 
 import jakarta.persistence.*;
@@ -9,7 +10,6 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class Session {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,11 +20,12 @@ public class Session {
     private Task task;
 
     private int sessionDuration = 90;
-    private int currentTimeLeft;
+    private boolean completed = false;
+    private boolean isActive = false;
+    private LocalDateTime startTime = LocalDateTime.now();
+    private LocalDateTime endTime = LocalDateTime.now().plusMinutes(90);
 
-    private boolean completed;
-    private boolean isActive;
-
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
+    public Session(Task task) {
+        this.task = task;
+    }
 }

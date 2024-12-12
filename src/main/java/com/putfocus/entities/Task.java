@@ -6,9 +6,9 @@ import lombok.*;
 import java.util.List;
 
 @Data
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,8 +18,10 @@ public class Task {
     private String description;
     @Column(nullable = false)
     private int currentSession = 0;
+    private int sessionEstimate;
     private boolean completed;
 
     @OneToMany(mappedBy = "task", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Session> sessions;
+
 }
